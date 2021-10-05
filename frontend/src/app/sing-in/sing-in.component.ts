@@ -88,7 +88,7 @@ export class SingInComponent implements OnInit {
     if (this.verifyInputs()) {
       this.authSvc.login(this.authentication).subscribe(
         () => {
-          this.router.navigateByUrl('painel');
+          this.router.navigateByUrl('controle-de-medicamentos');
         }
       );
 

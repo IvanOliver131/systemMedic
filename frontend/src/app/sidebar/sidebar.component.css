@@ -18,17 +18,18 @@ body{
 }
 .sidebar{
   position: fixed;
+  display: inline-block;
   top: 0;
   left: 0;
   height: 100%;
-  width: 78px;
   background: #F8F8F8;
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
 }
 .sidebar.active{
-  width: 240px
+  width: 18%;
+  display: inline-block;
 }
 .sidebar .logo_content .logo{
   color: #70A0FF;
@@ -76,8 +77,8 @@ body{
   width: 100%;
   margin: 0 5px;
   list-style: none;
-  line-height: 50px;
   margin: 5px 0;
+  margin-bottom: 16px;
 }
 .sidebar ul li .tooltip{
   position: absolute;
@@ -134,7 +135,6 @@ body{
   align-items: center;
   text-decoration: none;
   border-radius: 12px;
-  white-space: nowrap;
   transition: all 0.4s ease;
 }
 .sidebar ul li a:hover{
@@ -152,7 +152,7 @@ body{
   text-align: center;
 }
 .sidebar .links_name{
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   opacity: 0;
   pointer-events: none;
@@ -170,6 +170,9 @@ body{
   left: 0;
   width: 100%;
 }
+.sidebar .profile_content:hover{
+  cursor: pointer;
+}
 .sidebar .profile_content .profile{
   position: relative;
   padding: 10px 6px;
@@ -180,6 +183,9 @@ body{
 }
 .sidebar.active .profile_content .profile{
   background: #70A0FF;
+}
+.sidebar.active .profile_content .profile:hover{
+  background: #98baff;
 }
 .profile_content .profile .profile_details{
   display: flex;
@@ -228,25 +234,7 @@ body{
 .sidebar.active .profile #log_out{
   background: none
 }
-.home_content{
-  position: absolute;
-  height: 100%;
-  width: calc(100% - 78px);
-  left: 78px;
-  background: #E4E9F7;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2px);
-  transition: all 0.5s ease;
-}
-.sidebar.active ~ .home_content{
-  z-index: 100;
-}
-.home_content .text{
-  font-size: 25px;
-  font-weight: 500;
-  color: #1d1b31;
-  margin: 12px;
-}
-.sidebar.active ~ .home_content{
-  width: calc(100% - 240px);
-  left: 240px;
+.logout{
+  color: white; 
+  font-size: 14px;
 }

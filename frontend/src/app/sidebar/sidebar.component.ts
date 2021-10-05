@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +11,9 @@ export class SidebarComponent implements OnInit {
   el2: any;
   loading: boolean = false;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
   }
@@ -19,4 +22,31 @@ export class SidebarComponent implements OnInit {
 
   }
 
+  goToControleMedicamentos(){
+    this.router.navigateByUrl('sign-in')
+  }
+
+  goToControlePacientes(){
+
+  }
+
+  goToControleDeRetirada(){
+
+  }
+
+  goToRelatorioDeRetirada(){
+
+  }
+
+  goToRelatorioDeReposicao(){
+
+  }
+
+  goToRelatorioDeMedicamentosControlados(){
+    
+  }
+
+  logout(){
+    
+  }
 }

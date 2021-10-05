@@ -5,9 +5,9 @@ import { AuthGuard } from './shared/auth.guard';
 import { SingInComponent } from './sing-in/sing-in.component';
 
 const routes: Routes = [
-  { path: '', component: SingInComponent },
-  { path: 'sing-in', component: SingInComponent },
-  { path: 'painel', component: PainelComponent, canActivate: [AuthGuard] }
+  { path: 'sign-in', component: SingInComponent },
+  { path: 'sign-in', component: SingInComponent },
+  { path: 'controle-de-medicamentos', component: PainelComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
