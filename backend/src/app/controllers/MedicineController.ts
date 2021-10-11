@@ -33,7 +33,7 @@ class MedicineController {
         const repository = getRepository(Medicine);
         const medicine = await repository.findOne(id);
 
-        if (medicine != null) {
+        if (medicine !== null) {
             return res.json(medicine);
         }
         return res.status(404).json({ message: 'Medicine not found!' })
@@ -46,7 +46,7 @@ class MedicineController {
         const medicine = await repository.findOne(id)
         if(medicine){
             await repository.delete(medicine.id)
-            return res.status(400).json({ message: 'Medicine removed succesfully!' })
+            return res.status(200).json({ message: 'Medicine removed succesfully!' })
         }
         
         return res.status(404).json({ message: 'Medicine not found!' })

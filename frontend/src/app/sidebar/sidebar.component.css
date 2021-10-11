@@ -17,11 +17,11 @@ body{
   background: #11101d;
 }
 .sidebar{
-  position: fixed;
-  display: inline-block;
+  /* position: fixed; */
+  float: left;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 55rem;
   background: #F8F8F8;
   padding: 6px 14px;
   z-index: 99;
@@ -29,13 +29,15 @@ body{
 }
 .sidebar.active{
   width: 18%;
-  display: inline-block;
+  /* display: inline-block; */
+  /* position: fixed;  */
+  float: left;
 }
 .sidebar .logo_content .logo{
   color: #70A0FF;
   display: flex;
   height: 50px;
-  width: 100%;
+  width: 18%;
   align-items: center;
   opacity: 0;
   pointer-events: none;
@@ -54,9 +56,9 @@ body{
   font-weight: 400;
 }
 .sidebar #btn{
-  position: absolute;
+  position: absolute; 
   color: #70A0FF;
-  top: 6px;
+  top: 4px;
   left: 50%;
   font-size: 22px;
   height: 50px;
@@ -66,7 +68,7 @@ body{
   transform: translateX(-50%);
 }
 .sidebar.active #btn{
-  left: 90%;
+  left: 17%;
 }
 .sidebar ul{
   margin-top: 20px;
@@ -168,7 +170,7 @@ body{
   color: #fff;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 18%;
 }
 .sidebar .profile_content:hover{
   cursor: pointer;

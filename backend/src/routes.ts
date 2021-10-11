@@ -6,7 +6,7 @@ import UserController from "./app/controllers/UserController";
 import AuthController from "./app/controllers/AuthController";
 import PacientController from "./app/controllers/PacientController";
 import MedicineController from "./app/controllers/MedicineController";
-//import PacientMedicineController from "./app/controllers/PacientMedicineController";
+import PacientMedicineController from "./app/controllers/PacientMedicineController";
 
 const router = Router();
 
@@ -15,7 +15,8 @@ router.post('/auth', AuthController.authenticate);
 
 /*USERS*/
 router.post('/users', UserController.store);
-router.get('/users', authMiddleware, UserController.index);
+router.get('/users', UserController.ready);
+router.get('/user', authMiddleware, UserController.index);
 
 /*PACIENT*/
 router.post('/pacient', PacientController.store);
@@ -31,11 +32,11 @@ router.get('/medicine/:id', MedicineController.readyByOne);
 router.delete('/medicine/:id', MedicineController.delete);
 router.put('/medicine/:id', MedicineController.update);
 
-/*PACIENT AND MEDICINE
+/*PACIENT AND MEDICINE */
 router.post('/pacientMedicine', PacientMedicineController.store);
 router.get('/pacientMedicine', PacientMedicineController.ready);
 router.get('/pacientMedicine/:id', PacientMedicineController.readyByOne);
-router.delete('/pacientMedicine/:id', PacientMedicineController.delete);
-router.put('/pacientMedicine/:id', PacientMedicineController.update);*/
+//router.delete('/pacientMedicine/:id', PacientMedicineController.delete);
+//router.put('/pacientMedicine/:id', PacientMedicineController.update);
 
 export default router;

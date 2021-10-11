@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany, ManyToMany, JoinTable } from 'typeorm';
-import Medicine from './Medicine';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import PacientMedicine from './PacientMedicine';
 
 @Entity('pacients')
 class Pacient {
@@ -27,13 +27,8 @@ class Pacient {
     @Column()
     deleted_at: Date;
 
-    @ManyToMany(() => Medicine, medicine => medicine.pacient, { eager: true })
-    @JoinTable({
-        name: 'PacientMedicine',
-        joinColumns: [{ name: "id_pacient", referencedColumnName: "id" }],
-        inverseJoinColumns: [{ name: "id_medicine", referencedColumnName: "id" }],
-    })
-    medicines: Medicine[];
+    @OneToMany(() => PacientMedicine, pacientMedicine => pacientMedicine.pacients, { eager: true })
+    pacientMedicine: PacientMedicine[];
 }
 
 export default Pacient;

@@ -1,0 +1,63 @@
+.card{
+  width: 80%; 
+  margin:auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background: #F8F8F8;
+  border: none;
+}
+
+.card-body{
+  padding: 20px;
+}
+
+.card-title{
+  text-align: center;
+  color: #B5D2A7;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.text-input{
+  color: #70A0FF;
+  font-weight: 500;
+}
+
+.form-control{
+  margin: 10px;
+}
+
+.form-check{
+  margin: 5px;
+}
+
+.btn{
+  margin-right: 10px;
+}
+
+.container{
+  margin-top: 2vh;
+}
+
+.scroll{ 
+  display: block;
+  height: 29vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth; 
+}
+
+.title-table{
+  color: white;
+  font-weight: 500;
+}
+
+.text-table{
+  color:#70A0FF;
+}
+
+.btn .button-delete:hover{
+  background-color:#d63934;
+}
+
+.btn .button-update:hover{
+  background-color: #0065bd;
+}

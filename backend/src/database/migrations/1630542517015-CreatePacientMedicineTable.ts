@@ -1,24 +1,24 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreatePacientMedicineTable1630542517015 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
             name: 'pacientsMedicine',
-            columns: [               
+            columns: [
                 {
                     name: 'id_pacient',
-                    type: 'integer',
+                    type: 'BIGINT UNSIGNED',
                     isPrimary: true,
                 },
                 {
                     name: 'id_medicine',
-                    type: 'integer',
+                    type: 'BIGINT UNSIGNED',
                     isPrimary: true,
                 },
                 {
                     name: 'qtd_medicine',
-                    type: 'integer',
+                    type: 'int',
                 },
             ],
             foreignKeys: [

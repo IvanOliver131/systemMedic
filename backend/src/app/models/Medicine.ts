@@ -1,6 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, CreateDateColumn, ManyToMany } from 'typeorm';
-import Pacient from './Pacient';
-//import PacientMedicine from './PacientMedicine';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, CreateDateColumn, ManyToMany, OneToMany } from 'typeorm';
+import PacientMedicine from './PacientMedicine';
 
 @Entity('medicines')
 class Medicine {
@@ -34,20 +33,9 @@ class Medicine {
     @Column()
     deleted_at: Date
 
-    @ManyToMany(() => Pacient, (pacient) => pacient.medicines)
-    //@JoinColumn({ name: 'id' })
-    pacient: Pacient[]; 
-
-    /*
-    @ManyToMany(() => Pacient, pacient => pacient.medicines, { eager: true })
-    @JoinTable({
-        name: 'PacientMedicine',
-        joinColumns: [{ name: "id_pacient", referencedColumnName: "id" }],
-        inverseJoinColumns: [{ name: "id_medicine", referencedColumnName: "id" }],
-    })
-    pacient: Pacient[];*/
+    @OneToMany(() => PacientMedicine, pacientMedicine => pacientMedicine.medicines)
+    pacientMedicine: PacientMedicine[];
 }
 
 export default Medicine;
 
-  

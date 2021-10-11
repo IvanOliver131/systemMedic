@@ -57,6 +57,7 @@
         <li style="margin: 0px; padding: 0px; height: 5px;">
             <hr style="color: #70A0FF;">
         </li>
+        <!-- Só aparece para usuarios do tipo admin -->
         <li>
             <a (click)="add()">
                 <i class="uil uil-users-alt"></i>
@@ -65,7 +66,7 @@
             <span class="tooltip">Controle de Usuário</span>
         </li>
     </ul>
-    <div class="profile_content"> 
+    <div class="profile_content" (click)="logout()"> 
         <div class="profile">  
             <span class="logout">Sair</span>    
             <i class='bx bx-log-out' id="log_out"></i>
