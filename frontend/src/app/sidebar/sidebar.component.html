@@ -17,7 +17,7 @@
             <span class="tooltip">Controle de medicamentos</span>
         </li>
         <li>
-            <a (click)="add()">
+            <a (click)="goToControlePacientes()">
                 <i class='bx bx-user'></i>
                 <span class="links_name">Controle de pacientes</span>
             </a>
@@ -58,7 +58,7 @@
             <hr style="color: #70A0FF;">
         </li>
         <!-- Só aparece para usuarios do tipo admin -->
-        <li>
+        <li *ngIf=" typeUser === 'admin' ">
             <a (click)="add()">
                 <i class="uil uil-users-alt"></i>
                 <span class="links_name">Controle de Usuário</span>

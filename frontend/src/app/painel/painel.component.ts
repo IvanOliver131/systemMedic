@@ -63,7 +63,7 @@ export class PainelComponent implements OnInit {
     }
   }
 
-  setMedicine(allMedicine){
-    this.medicine = allMedicine;
+  setMedicine(medicine){
+    this.medicine = medicine;
   }
 }

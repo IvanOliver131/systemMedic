@@ -16,7 +16,7 @@ class Pacient {
     bairro: string;
 
     @Column()
-    CPF: string;
+    cpf: string;
 
     @Column()
     cartaoSUS_RG: string;

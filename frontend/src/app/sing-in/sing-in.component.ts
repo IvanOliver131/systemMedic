@@ -59,6 +59,7 @@ export class SingInComponent implements OnInit {
     if (this.verifyInputs2()) {
       this.userSvc.register(this.user).subscribe(
         () => {
+          localStorage.setItem('email', this.user.email);
         }
       );
       this.user = new User();

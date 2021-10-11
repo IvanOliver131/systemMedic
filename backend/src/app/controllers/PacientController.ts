@@ -7,15 +7,15 @@ class PacientController {
 
     async store(req: Request, res: Response) {
         const repository = getRepository(Pacient);
-        const { name, age, bairro, CPF, cartaoSUS_RG } = req.body;
+        const { name, age, bairro, cpf, cartaoSUS_RG } = req.body;
 
-        const pacientExists = await repository.findOne({ where: { CPF } });
+        const pacientExists = await repository.findOne({ where: { cpf } });
 
         if (pacientExists) {
             return res.sendStatus(409);
         }
 
-        const pacient = repository.create({ name, age, bairro, CPF, cartaoSUS_RG });
+        const pacient = repository.create({ name, age, bairro, cpf, cartaoSUS_RG });
         await repository.save(pacient);
 
         return res.json(pacient);
@@ -46,7 +46,7 @@ class PacientController {
         const pacient = await repository.findOne(id);
         if(pacient){
             await repository.delete(pacient.id)
-            return res.status(400).json({ message: 'Pacient removed succesfully!' });
+            return res.status(200).json({ message: 'Pacient removed succesfully!' });
         }
         
         return res.status(404).json({ message: 'Pacient not found!' });

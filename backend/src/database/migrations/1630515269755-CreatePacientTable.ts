@@ -24,7 +24,7 @@ export class CreatePacientTable1630515269755 implements MigrationInterface {
                     type: 'varchar',
                 },
                 {
-                    name: 'CPF',
+                    name: 'cpf',
                     type: 'varchar',
                     isUnique: true
                 },

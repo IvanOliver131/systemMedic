@@ -11,13 +11,15 @@ import { AuthGuard } from './shared/auth.guard';
 import { RouterModule } from '@angular/router';
 import { PainelComponent } from './painel/painel.component';
 import { SingInComponent } from './sing-in/sing-in.component';
+import { PacientComponent } from './pacient/pacient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     PainelComponent,
-    SingInComponent
+    SingInComponent,
+    PacientComponent
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@ export class AuthService extends BaseService {
             password: loginObj.password
         }
 
-        console.log(obj)
+        localStorage.setItem("email", obj.email);
 
         return this.http.post(this.authURL, obj, {
             headers: this.getCommonHeaders(false)

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Md5 } from 'ts-md5/dist/md5';
+import { User } from 'src/app/shared/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-    userURL = `http://localhost:3000/users`;
+    usersURL = `http://localhost:3000/users`;
 
     constructor(private http: HttpClient) { }
 
@@ -24,8 +26,10 @@ export class UserService {
         headers = headers.append('Content-Type', 'application/json');
         headers = headers.append('bearer', "697-2fe-fc860");
 
-        console.log(obj)
-        return this.http.post(`${this.userURL}`, obj);
+        return this.http.post(`${this.usersURL}`, obj);
     }
 
+    getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(`${this.usersURL}`);
+    }
 }

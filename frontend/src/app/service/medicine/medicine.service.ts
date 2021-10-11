@@ -24,8 +24,7 @@ export class MedicineService {
 
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
-
-        console.log(obj)
+        
         return this.http.post(`${this.medicineURL}`, obj);
     }
 
