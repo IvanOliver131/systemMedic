@@ -7,25 +7,33 @@ class PacientController {
 
     async store(req: Request, res: Response) {
         const repository = getRepository(PacientMedicine);
-        const { id_pacient, id_medicine, qtd_medicine } = req.body;
+        const { id_pacient, lstMedicine } = req.body;
 
-        console.log(repository);
+        console.log(id_pacient, lstMedicine);
 
-        const drugWithdrawal = repository.create({ id_pacient });
-        drugWithdrawal.id_medicine = id_medicine;
-        await repository.save(drugWithdrawal);
-
-        return res.json(drugWithdrawal);
+        let pacientMedicine: any[] = [];
+        lstMedicine.forEach(async (item: any) => {
+            pacientMedicine.push(
+                repository.create({
+                    id_pacient,
+                    id_medicine: item.id_medicine,
+                    qtd_medicine: item.qtd_medicine
+                })
+            )
+        });
+        console.log('PACIENT MEDICINE', pacientMedicine)
+        await repository.save(pacientMedicine);
+        return res.status(200).json({ message: 'Medicamentos vendidos' })
     }
 
-    async ready(req: Request, res: Response){
+    async ready(req: Request, res: Response) {
         const repository = getRepository(PacientMedicine);
         const drugWithdrawal = await repository.find();
 
         return res.json(drugWithdrawal);
     }
 
-    async readyByOne(req: Request, res: Response){
+    async readyByOne(req: Request, res: Response) {
         const { id } = req.params;
         const repository = getRepository(PacientMedicine);
         const drugWithdrawal = await repository.findOne(id);
