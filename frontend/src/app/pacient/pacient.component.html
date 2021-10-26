@@ -8,16 +8,16 @@
       <input type="text" class="form-control" placeholder="Informe o nome do paciente" name="name" [(ngModel)]="pacient.name">
 
       <label class="text-input">Idade</label>
-      <input type="email" class="form-control" placeholder="Informe a idade do paciente" name="age" [(ngModel)]="pacient.age"> 
+      <input type="text" class="form-control" [specialCharacters]="[ '[' ,']' , '\\' ]" mask="000" placeholder="Informe a idade do paciente" name="age" [(ngModel)]="pacient.age"> 
       
       <label class="text-input">Bairro</label>
-      <input type="email" class="form-control" placeholder="Informe o bairro do paciente"  name="bairro" [(ngModel)]="pacient.bairro">
+      <input type="text" class="form-control" placeholder="Informe o bairro do paciente"  name="bairro" [(ngModel)]="pacient.bairro">
 
       <label class="text-input">CPF</label>
-      <input type="email" class="form-control" placeholder="Informe o CPF do paciente" name="cpf" [(ngModel)]="pacient.cpf">
+      <input type="text" class="form-control" mask="000.000.000-00" placeholder="Informe o CPF do paciente" name="cpf" [(ngModel)]="pacient.cpf">
 
       <label class="text-input">Cartão SUS ou RG</label>
-      <input type="email" class="form-control" placeholder="Informe o cartao do SUS ou RG do paciente" name="cartaoSUS_RG" [(ngModel)]="pacient.cartaoSUS_RG">
+      <input type="text" class="form-control" placeholder="Informe o cartao do SUS ou RG do paciente" name="cartaoSUS_RG" [(ngModel)]="pacient.cartaoSUS_RG">
 
       <div style="text-align: end;">
         <button type="button" class="btn btn-danger" (click)="deletePacient(pacient)">Deletar</button>
@@ -27,16 +27,21 @@
     </div>
   </div>
 
+  <div class="d-flex justify-content-center px-5">
+    <div class="search"> <input type="text" class="search-input"  placeholder="Procurar..." name="" id="datatable-search-input"> 
+      <a href="#" class="search-icon"> 
+        <i class="fa fa-search"></i> 
+      </a> 
+    </div>
+  </div>
+
   <div class="container scroll">
-    <table class="table table-responsive" >
+    <table class="table table-responsive">
         <thead style="background-color: #70A0FF;">
             <tr>
                 <th scope="col" class="title-table">ID</th>
                 <th scope="col" class="title-table">Paciente</th>
                 <th scope="col" class="title-table">Idade</th>
-                <th scope="col" class="title-table">Bairro</th>
-                <th scope="col" class="title-table">CPF</th>
-                <th scope="col" class="title-table">Cartão SUS | RG</th>
             </tr>
         </thead>
 
@@ -45,9 +50,6 @@
                 <th scope="row" class="text-table">{{qtd.id}}</th>
                 <td class="text-table">{{qtd.name}}</td>
                 <td class="text-table">{{qtd.age}}</td>
-                <td class="text-table">{{qtd.bairro}}</td>
-                <td class="text-table">{{qtd.cpf}}</td>
-                <td class="text-table">{{qtd.cartaoSUS_RG}}</td>
                 <span type="text" class="btn button-delete" style="margin-left: 20px; margin-top: 3px; border: none; background-color:#d9534f; color: white;"
                     (click)="deletePacient(allPacientLst[i])"><i class="uil uil-trash-alt"></i></span>
                     

@@ -9,6 +9,8 @@ import { Medicine } from '../shared/medicine';
 })
 export class PainelComponent implements OnInit {
   public medicine: Medicine = new Medicine();
+  public search;
+  public medicineSpecific;
   public allMedicineLst: Array<Medicine> = new Array<Medicine>();
 
   constructor(
@@ -16,6 +18,7 @@ export class PainelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.medicine.type = false;
     this.getMedicines();
   }
 
@@ -23,7 +26,19 @@ export class PainelComponent implements OnInit {
     let msg = ``
     let success = true;
     if (!this.medicine.name) {
-      msg += ` O campo nome do medicamento é requerido`;
+      msg += ` O campo nome do medicamento é requerido\n\n`;
+      success = false;
+    }
+    if (!this.medicine.fornecedor) {
+      msg += ` O campo fornecedor do medicamento é requerido\n\n`;
+      success = false;
+    }
+    if (!this.medicine.estoque) {
+      msg += ` O campo estoque do medicamento é requerido\n\n`;
+      success = false;
+    }
+    if (!this.medicine.nota_fiscal) {
+      msg += ` O campo nota fiscal do medicamento é requerido\n\n`;
       success = false;
     }
     if (!success) {
@@ -32,6 +47,28 @@ export class PainelComponent implements OnInit {
       });
     }
     return success;
+  }
+
+  async funcaoCadaTecla(search){
+    if(search === ''){
+      this.getMedicines();
+    }
+  }
+
+  funcaoEnter(search){
+    if(search !== ''){
+      this.getMedicinesOne(search);
+    }
+    else{
+      this.getMedicines();
+    }
+  }
+
+  async getMedicinesOne(search){
+    this.allMedicineLst = [];
+    this.medicineSvc.getSpecificMedicines(search).subscribe((result) =>{ 
+      this.allMedicineLst = result;
+    });
   }
 
   async addMedicine(){

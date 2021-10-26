@@ -26,6 +26,22 @@ export class PacientComponent implements OnInit {
       msg += ` O campo nome do paciente é requerido`;
       success = false;
     }
+    if (!this.pacient.age) {
+      msg += ` O campo idade do paciente é requerido`;
+      success = false;
+    }
+    if (!this.pacient.bairro) {
+      msg += ` O campo bairro do paciente é requerido`;
+      success = false;
+    }
+    if (!this.pacient.cartaoSUS_RG) {
+      msg += ` O campo cartao do SUS ou RG do paciente é requerido`;
+      success = false;
+    }
+    if (!this.pacient.cpf) {
+      msg += ` O campo CPF do paciente é requerido`;
+      success = false;
+    }
     if (!success) {
       console.log(msg, `Ok`, {
         duration: 3000,

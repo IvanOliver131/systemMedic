@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Medicine } from 'src/app/shared/medicine';
-import { Observable } from 'rxjs';
+import { Observable, ObservableInput } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +14,7 @@ export class MedicineService {
     registerMedicine(cadastroObj: any) {
         const obj = {
             name: cadastroObj.name,
-            estoque: cadastroObj.type,
+            estoque: cadastroObj.estoque,
             type: cadastroObj.type,
             fornecedor: cadastroObj.fornecedor,
             nota_fiscal: cadastroObj.nota_fiscal,
@@ -32,10 +32,18 @@ export class MedicineService {
       return this.http.get<Medicine[]>(`${this.medicineURL}`);
     }
 
+    getSpecificMedicines(searchObj: any): Observable<Medicine[]>{
+      const obj = {
+        frase: searchObj
+      }
+      
+      return this.http.get<Medicine[]>(`${this.medicineURL}/${obj.frase}`);
+    }
+
     updateMedicine(alterObj: any): Observable<Medicine[]>{
       const obj = {
         name: alterObj.name,
-        estoque: alterObj.type,
+        estoque: alterObj.estoque,
         type: alterObj.type,
         fornecedor: alterObj.fornecedor,
         nota_fiscal: alterObj.nota_fiscal,

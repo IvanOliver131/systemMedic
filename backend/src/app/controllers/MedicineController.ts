@@ -2,12 +2,20 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 
 import Medicine from '../models/Medicine';
+import { MedicineDto } from '../validators/MedicineDto';
 
 class MedicineController {
 
     async store(req: Request, res: Response) {
         const repository = getRepository(Medicine);
         const { name, estoque, type, fornecedor, nota_fiscal, valor, descricao } = req.body;
+
+        const medicineValidator = new MedicineDto()
+        try {
+            await medicineValidator.createValidation().validate(req.body, { abortEarly: false })
+        } catch (error: any) {
+            return res.status(400).json({ message: error.message });
+        }
 
         const medicineExists = await repository.findOne({ where: { nota_fiscal } });
 
@@ -22,10 +30,33 @@ class MedicineController {
     }
 
     async ready(req: Request, res: Response){
-      const repository = getRepository(Medicine);
+        const repository = getRepository(Medicine);
         const medicines = await repository.find();
 
         return res.json(medicines);
+    }
+
+    async readyBySpecific(req: Request, res: Response){
+        const repository = getRepository(Medicine);
+        const { frase } = req.params;
+        const lstMedicines = await repository.find();
+        let medicineSpecific: any = [];
+
+        if(lstMedicines === null){
+            return res.status(404).json({ message: 'Medicine not found!' });
+        }
+
+        lstMedicines.forEach((medicine)=>{
+            if(medicine.name == frase || medicine.id == Number(frase)){ 
+                medicineSpecific.push(medicine);
+            }
+        });
+
+        if(medicineSpecific == ''){
+            return res.json(lstMedicines);
+        }
+
+        return res.json(medicineSpecific);
     }
 
     async readyByOne(req: Request, res: Response){
@@ -36,7 +67,7 @@ class MedicineController {
         if (medicine !== null) {
             return res.json(medicine);
         }
-        return res.status(404).json({ message: 'Medicine not found!' })
+        return res.status(404).json({ message: 'Medicine not found!' });
     }
 
     async delete(req: Request, res: Response){

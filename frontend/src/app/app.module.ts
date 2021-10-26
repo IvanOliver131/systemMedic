@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { PainelComponent } from './painel/painel.component';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { PacientComponent } from './pacient/pacient.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { RetiradaComponent } from './retirada/retirada.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { PacientComponent } from './pacient/pacient.component';
     SidebarComponent,
     PainelComponent,
     SingInComponent,
-    PacientComponent
+    PacientComponent,
+    RetiradaComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { PacientComponent } from './pacient/pacient.component';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     UserService,

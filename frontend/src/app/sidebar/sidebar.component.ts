@@ -45,15 +45,15 @@ export class SidebarComponent implements OnInit {
   }
 
   goToControleMedicamentos(){
-    this.router.navigateByUrl('controle-de-medicamentos')
+    this.router.navigateByUrl('controle-de-medicamentos');
   }
 
   goToControlePacientes(){
-    this.router.navigateByUrl('controle-de-pacientes')
+    this.router.navigateByUrl('controle-de-pacientes');
   }
 
   goToControleDeRetirada(){
-
+    this.router.navigateByUrl('controle-de-retirada')
   }
 
   goToRelatorioDeRetirada(){

@@ -1,51 +1,34 @@
+
 <app-sidebar></app-sidebar>
 <div>
-  <div class="card" >
+  <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Controle de Medicamentos</h5>
+      <h5 class="card-title">Controle de Retirada</h5>
 
-      <label class="text-input">Nome do Medicamento</label>
-      <input type="text" class="form-control" placeholder="Informe o nome do medicamento" name="name" [(ngModel)]="medicine.name">
+      <label class="text-input">Paciente</label>
+      <input type="text" class="form-control" mask="0000" placeholder="Informe a quantidade de medicamentos em estoque"> 
 
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="1" name="type" [(ngModel)]="medicine.type">
-        <label class="form-check-label" for="flexCheckDefault">
-          Controlado
-        </label>
-      </div>
-
-      <label class="text-input">Estoque</label>
-      <input type="text" class="form-control" mask="0000" placeholder="Informe a quantidade de medicamentos em estoque" name="estoque" [(ngModel)]="medicine.estoque"> 
-      
-      <label class="text-input">Fornecedor</label>
-      <input type="text" class="form-control" placeholder="Informe o fornecedor"  name="fornecedor" [(ngModel)]="medicine.fornecedor">
-
-      <label class="text-input">Nota Fiscal</label>
-      <input type="email" class="form-control" placeholder="Informe a nota fiscal do medicamento" name="nota_fiscal" [(ngModel)]="medicine.nota_fiscal">
-
-      <label class="text-input">Valor Unitário</label>
-      <input type="text" class="form-control" placeholder="Informe o valor unitário do medicamento" name="valor" [(ngModel)]="medicine.valor">
-
-      <label class="text-input">Descrição</label>
-      <input type="text" class="form-control" placeholder="Informe a descrição do medicamento" name="descricao" [(ngModel)]="medicine.descricao">
+      <label class="text-input">Medicamento</label>
+      <input type="text" class="form-control" mask="0000" placeholder="Informe a quantidade de medicamentos em estoque"> 
 
       <div style="text-align: end;">
-        <button type="button" class="btn btn-danger" (click)="deleteMedicine(medicine)">Deletar</button>
-        <button type="button" class="btn btn-primary" (click)="updateMedicine()">Alterar</button>
-        <button type="button" class="btn btn-success" (click)="addMedicine()">Cadastrar</button>   
+        <button type="button" class="btn btn-danger">Deletar</button>
+        <button type="button" class="btn btn-primary">Alterar</button>
+        <button type="button" class="btn btn-success">Cadastrar</button>   
       </div>     
     </div>
   </div>
 
   <div class="d-flex justify-content-center px-5">
-    <div class="search"> <input type="text" class="search-input"  placeholder="Procurar..." name="" [(ngModel)]="search"  (keyup)="funcaoCadaTecla(search)" (keyup.enter)="funcaoEnter(search)"> 
+    <div class="search"> 
+      <input type="text" class="search-input" placeholder="Procurar..." name="" id="datatable-search-input"> 
       <a href="#" class="search-icon"> 
         <i class="fa fa-search"></i> 
       </a> 
     </div>
   </div>
 
-  <div class="container scroll">
+  <!-- <div class="container scroll">
     <table class="table table-responsive" >
         <thead style="background-color: #70A0FF;">
             <tr>
@@ -78,6 +61,6 @@
             </tr>
         </tbody>
     </table>
-  </div>
+  </div> -->
 </div>
 

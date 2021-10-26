@@ -27,6 +27,7 @@ router.put('/pacient/:id', PacientController.update);
 
 /*MEDICINE*/
 router.post('/medicine', MedicineController.store);
+router.get('/medicine/:frase', MedicineController.readyBySpecific);
 router.get('/medicine', MedicineController.ready);
 router.get('/medicine/:id', MedicineController.readyByOne);
 router.delete('/medicine/:id', MedicineController.delete);

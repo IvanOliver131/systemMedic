@@ -17,7 +17,7 @@ class PacientController {
             return res.status(400).json({ message: error.message });
         }
 
-        const pacientExists = await repository.findOne({ where: { cpf } });
+        const pacientExists = await repository.findOne({ where: { cpf, cartaoSUS_RG } });
 
         if (pacientExists) {
             return res.sendStatus(409);

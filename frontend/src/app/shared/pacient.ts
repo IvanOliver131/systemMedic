@@ -1,3 +1,5 @@
+import { Medicine } from "./medicine";
+
 export class Pacient {
   id: number;
   name: string;
@@ -5,4 +7,5 @@ export class Pacient {
   bairro: string;
   cpf: string;
   cartaoSUS_RG: string;
+  lstMedicine: Array<Medicine> = new Array<Medicine>();
 }
