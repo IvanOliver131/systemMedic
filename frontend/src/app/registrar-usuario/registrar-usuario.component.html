@@ -14,16 +14,16 @@
       <input type="password" class="form-control" placeholder="Informe a senha do usuario"  name="password" [(ngModel)]="user.password">
 
       <label class="text-input">Tipo do usuário</label>
-      <select class="form-select" aria-label="Default select example" [(ngModel)]="user.type">
+      <select class="form-select form-control" aria-label="Default select example" [(ngModel)]="user.type">
         <option value="admin" selected>Administrador</option>
         <option value="user">Usuário</option>
       </select>
-    </div>
 
-    <div style="text-align: end;">
-      <button type="button" class="btn btn-danger" (click)="deleteUser(user)">Deletar</button>
-      <button type="button" class="btn btn-primary" (click)="updateUser()">Alterar</button>
-      <button type="button" class="btn btn-success" (click)="addUser()">Cadastrar</button>   
+      <div style="text-align: end;">
+        <button type="button" class="btn btn-danger" (click)="deleteUser(user)">Deletar</button>
+        <button type="button" class="btn btn-primary" (click)="updateUser()">Alterar</button>
+        <button type="button" class="btn btn-success" (click)="addUser()">Cadastrar</button>   
+      </div>  
     </div>  
   </div>
 
