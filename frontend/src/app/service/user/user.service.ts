@@ -13,13 +13,14 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     register(cadastroObj: any) {
-        let password = Md5.hashStr(cadastroObj.password);
-        cadastroObj.password = password;
+        // let password = Md5.hashStr(cadastroObj.password);
+        // cadastroObj.password = password;
 
         const obj = {
             username: cadastroObj.username,
             email: cadastroObj.email,
-            password: cadastroObj.password
+            password: cadastroObj.password,
+            type: cadastroObj.type
         }
 
         let headers = new HttpHeaders();
@@ -31,5 +32,28 @@ export class UserService {
 
     getUsers(): Observable<User[]> {
         return this.http.get<User[]>(`${this.usersURL}`);
+    }
+
+    getSpecificUser(searchObj: any): Observable<User[]>{
+        const obj = {
+            frase: searchObj
+        }
+        
+        return this.http.get<User[]>(`${this.usersURL}/${obj.frase}`);
+    }
+
+    updateUser(alterObj: any): Observable<User[]>{
+        const obj = {
+            username: alterObj.username,
+            type: alterObj.type,
+            email: alterObj.email,
+            password: alterObj.password,
+        }
+
+        return this.http.put<User[]>(`${this.usersURL}/${alterObj.id}`, obj);
+    }
+
+    deleteUser(user: any): Observable<User[]>{
+        return this.http.delete<User[]>(`${this.usersURL}/${user.id}`);
     }
 }

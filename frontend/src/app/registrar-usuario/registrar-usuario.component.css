@@ -2,11 +2,12 @@
   width: 80%; 
   margin:auto;
   box-shadow: none;
+  background: #F8F8F8;
   border: none;
 }
 
 .card-body{
-  padding: 15px;
+  padding: 20px;
   margin-top: 1vh;
 }
 
@@ -20,31 +21,6 @@
 .text-input{
   color: #70A0FF;
   font-weight: 500;
-  margin-top: 10px;
-}
-
-.text-input-select{
-  color: #70A0FF;
-  font-weight: 500;
-  text-align: center;
-  display: block;
-  margin: auto;
-  margin-top: 20px;
-  font-size: 1.2rem;
-}
-
-.text-input-select2:hover{
-  color: #8db3ff;
-  cursor: pointer;
-  transition: 500ms;
-}
-
-.text-input-select2{
-  color: #B5D2A7;
-  font-weight: 700;
-  margin: auto;
-  margin-top: 20px;
-  font-size: 1.2rem;
 }
 
 .form-control{
@@ -65,7 +41,7 @@
 
 .scroll{ 
   display: block;
-  height: 65vh;
+  height: 40vh;
   overflow-y: scroll;
   scroll-behavior: smooth; 
 }
@@ -86,8 +62,6 @@
 .btn .button-update:hover{
   background-color: #0065bd;
 }
-
-
 /*** SEARCH BAR ***/
 .search {
   width: 100%;

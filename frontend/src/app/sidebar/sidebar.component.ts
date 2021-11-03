@@ -40,10 +40,6 @@ export class SidebarComponent implements OnInit {
     
   }
 
-  add(){
-
-  }
-
   goToControleMedicamentos(){
     this.router.navigateByUrl('controle-de-medicamentos');
   }
@@ -53,19 +49,23 @@ export class SidebarComponent implements OnInit {
   }
 
   goToControleDeRetirada(){
-    this.router.navigateByUrl('controle-de-retirada')
+    this.router.navigateByUrl('controle-de-retirada');
   }
 
   goToRelatorioDeRetirada(){
-
+    this.router.navigateByUrl('relatorio-de-retirada')    
   }
 
   goToRelatorioDeReposicao(){
-
+    this.router.navigateByUrl('relatorio-de-resposicao');
   }
 
   goToRelatorioDeMedicamentosControlados(){
-    this.router.navigateByUrl('relatorio-de-medicamento')    
+    this.router.navigateByUrl('relatorio-de-medicamento');    
+  }
+
+  goToControleDeUsuario(){
+    this.router.navigateByUrl('registrar-usuario');    
   }
 
   logout(){

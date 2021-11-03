@@ -15,6 +15,9 @@ import { PacientComponent } from './pacient/pacient.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { RetiradaComponent } from './retirada/retirada.component';
 import { RelatorioMedicamentoComponent } from './relatorio-medicamento/relatorio-medicamento.component';
+import { RelatorioReposicaoComponent } from './relatorio-reposicao/relatorio-reposicao.component';
+import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { RelatorioRetiradaComponent } from './relatorio-retirada/relatorio-retirada.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { RelatorioMedicamentoComponent } from './relatorio-medicamento/relatorio
     SingInComponent,
     PacientComponent,
     RetiradaComponent,
-    RelatorioMedicamentoComponent
+    RelatorioMedicamentoComponent,
+    RelatorioReposicaoComponent,
+    RegistrarUsuarioComponent,
+    RelatorioRetiradaComponent
   ],
   imports: [
     BrowserModule,

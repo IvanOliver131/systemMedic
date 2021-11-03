@@ -34,14 +34,14 @@
             <hr style="color: #70A0FF;">
         </li>
         <li>
-            <a (click)="add()">
+            <a (click)="goToRelatorioDeRetirada()">
                 <i class='bx bx-pie-chart-alt-2'></i>
                 <span class="links_name">Relátorio de Retirada</span>
             </a>
             <span class="tooltip">Relátorio de Retirada</span>
         </li>
         <li>
-            <a (click)="add()">
+            <a (click)="goToRelatorioDeReposicao()">
                 <i class='bx bx-folder'></i>
                 <span class="links_name">Relátorio de Reposição</span>
             </a>
@@ -59,7 +59,7 @@
         </li>
         <!-- Só aparece para usuarios do tipo admin -->
         <li *ngIf=" typeUser === 'admin' ">
-            <a (click)="add()">
+            <a (click)="goToControleDeUsuario()">
                 <i class="uil uil-users-alt"></i>
                 <span class="links_name">Controle de Usuário</span>
             </a>

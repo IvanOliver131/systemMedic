@@ -3,14 +3,13 @@ import { MedicineService } from '../service/medicine/medicine.service';
 import { Medicine } from '../shared/medicine';
 
 @Component({
-  selector: 'app-relatorio-medicamento',
-  templateUrl: './relatorio-medicamento.component.html',
-  styleUrls: ['./relatorio-medicamento.component.css']
+  selector: 'app-relatorio-reposicao',
+  templateUrl: './relatorio-reposicao.component.html',
+  styleUrls: ['./relatorio-reposicao.component.css']
 })
-export class RelatorioMedicamentoComponent implements OnInit {
+export class RelatorioReposicaoComponent implements OnInit {
   public medicine: Medicine = new Medicine();
   public search;
-  public typeControl = 1;
   public allMedicineLst: Array<Medicine> = new Array<Medicine>();
 
   constructor(
@@ -18,12 +17,12 @@ export class RelatorioMedicamentoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getMedicinesControl(this.typeControl);
+    this.getMedicinesQtd();
   }
 
   async funcaoCadaTecla(search){
     if(search === ''){
-      this.getMedicinesControl(this.typeControl);
+      this.getMedicinesQtd();
     }
   }
 
@@ -32,7 +31,7 @@ export class RelatorioMedicamentoComponent implements OnInit {
       this.getMedicinesOne(search);
     }
     else{
-      this.getMedicinesControl(this.typeControl);
+      this.getMedicinesQtd();
     }
   }
 
@@ -43,8 +42,8 @@ export class RelatorioMedicamentoComponent implements OnInit {
     });
   }
 
-  async getMedicinesControl(typeControl){
-    this.medicineSvc.getAllMedicinesControl(typeControl).subscribe((result) =>{
+  async getMedicinesQtd(){
+    this.medicineSvc.getAllMedicinesQtd().subscribe((result) =>{
       this.allMedicineLst = result;   
     });
   }
@@ -52,5 +51,4 @@ export class RelatorioMedicamentoComponent implements OnInit {
   async downloadCsv(allMedicineLst, nameString){
     this.medicineSvc.downloadExcel(allMedicineLst, nameString);
   }
-
 }

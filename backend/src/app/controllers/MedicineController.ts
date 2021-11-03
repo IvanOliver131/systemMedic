@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
+import { getRepository, LessThanOrEqual} from 'typeorm';
 
 import Medicine from '../models/Medicine';
 import { MedicineDto } from '../validators/MedicineDto';
@@ -36,6 +36,16 @@ class MedicineController {
 
         return res.json(medicines);
     }
+
+    async readyByQtd(req: Request, res: Response){
+        const repository = getRepository(Medicine);
+        const medicines = await repository.find({
+            estoque: LessThanOrEqual(15),
+        });
+
+        return res.json(medicines);
+    }
+
 
     async ready(req: Request, res: Response){
         const repository = getRepository(Medicine);
