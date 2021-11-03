@@ -9,6 +9,7 @@ import { Pacient } from '../shared/pacient';
 })
 export class PacientComponent implements OnInit {
   public pacient: Pacient = new Pacient();
+  public search;
   public allPacientLst: Array<Pacient> = new Array<Pacient>();
 
   constructor(
@@ -50,6 +51,28 @@ export class PacientComponent implements OnInit {
     return success;
   }
 
+  async funcaoCadaTecla(search){
+    if(search === ''){
+      this.getPacients();
+    }
+  }
+
+  funcaoEnter(search){
+    if(search !== ''){
+      this.getPacientOne(search);
+    }
+    else{
+      this.getPacients();
+    }
+  }
+
+  async getPacientOne(search){
+    this.allPacientLst = [];
+    this.pacientSvc.getSpecificPacients(search).subscribe((result) =>{ 
+      this.allPacientLst = result;
+    });
+  }
+
   async addPacient(){
     if (this.verifyInputs()) {
       this.pacientSvc.registerPacient(this.pacient).subscribe(()=>{
@@ -62,7 +85,6 @@ export class PacientComponent implements OnInit {
   async getPacients(){
     this.pacientSvc.getAllPacients().subscribe((result) =>{
       this.allPacientLst = result; 
-      console.log(this.allPacientLst)  
     });
   }
 

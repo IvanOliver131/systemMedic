@@ -14,6 +14,7 @@ import { SingInComponent } from './sing-in/sing-in.component';
 import { PacientComponent } from './pacient/pacient.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { RetiradaComponent } from './retirada/retirada.component';
+import { RelatorioMedicamentoComponent } from './relatorio-medicamento/relatorio-medicamento.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RetiradaComponent } from './retirada/retirada.component';
     PainelComponent,
     SingInComponent,
     PacientComponent,
-    RetiradaComponent
+    RetiradaComponent,
+    RelatorioMedicamentoComponent
   ],
   imports: [
     BrowserModule,

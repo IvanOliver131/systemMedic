@@ -29,6 +29,14 @@ class MedicineController {
         return res.json(medicine);
     }
 
+    async readyControl(req: Request, res: Response){
+        const repository = getRepository(Medicine);
+        const { type } = req.params;
+        const medicines = await repository.find({where: {type: type}});
+
+        return res.json(medicines);
+    }
+
     async ready(req: Request, res: Response){
         const repository = getRepository(Medicine);
         const medicines = await repository.find();

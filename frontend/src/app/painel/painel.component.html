@@ -39,7 +39,7 @@
 
   <div class="d-flex justify-content-center px-5">
     <div class="search"> <input type="text" class="search-input"  placeholder="Procurar..." name="" [(ngModel)]="search"  (keyup)="funcaoCadaTecla(search)" (keyup.enter)="funcaoEnter(search)"> 
-      <a href="#" class="search-icon"> 
+      <a class="search-icon" (click)="funcaoEnter(search)"> 
         <i class="fa fa-search"></i> 
       </a> 
     </div>

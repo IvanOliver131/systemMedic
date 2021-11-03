@@ -29,6 +29,29 @@ class PacientController {
         return res.json(pacient);
     }
 
+    async readyBySpecific(req: Request, res: Response) {
+        const repository = getRepository(Pacient);
+        const { frase } = req.params;
+        const lstPacients = await repository.find();
+        let pacientSpecific: any = [];
+
+        if(lstPacients === null){
+            return res.status(404).json({ message: 'Pacient not found!' });
+        }
+
+        lstPacients.forEach((pacient)=>{
+            if(pacient.name == frase || pacient.id == Number(frase)){ 
+                pacientSpecific.push(pacient);
+            }
+        });
+
+        if(pacientSpecific == ''){
+            return res.json(lstPacients);
+        }
+
+        return res.json(pacientSpecific);
+    }
+
     async ready(req: Request, res: Response) {
         const repository = getRepository(Pacient);
         const pacients = await repository.find();

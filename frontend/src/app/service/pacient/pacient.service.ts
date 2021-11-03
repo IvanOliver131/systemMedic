@@ -26,6 +26,14 @@ export class PacientService {
         return this.http.post(`${this.pacientURL}`, obj);
     }
 
+    getSpecificPacients(searchObj: any): Observable<Pacient[]>{
+      const obj = {
+        frase: searchObj
+      }
+      
+      return this.http.get<Pacient[]>(`${this.pacientURL}/${obj.frase}`);
+    }
+
     getAllPacients(): Observable<Pacient[]> {
       return this.http.get<Pacient[]>(`${this.pacientURL}`);
     }

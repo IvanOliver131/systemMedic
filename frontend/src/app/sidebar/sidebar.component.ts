@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit {
   }
 
   goToRelatorioDeMedicamentosControlados(){
-    
+    this.router.navigateByUrl('relatorio-de-medicamento')    
   }
 
   logout(){

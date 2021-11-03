@@ -28,6 +28,10 @@ export class MedicineService {
         return this.http.post(`${this.medicineURL}`, obj);
     }
 
+    getAllMedicinesControl(typeControl): Observable<Medicine[]> {
+      return this.http.get<Medicine[]>(`${this.medicineURL}/control/` + typeControl);
+    }
+
     getAllMedicines(): Observable<Medicine[]> {
       return this.http.get<Medicine[]>(`${this.medicineURL}`);
     }

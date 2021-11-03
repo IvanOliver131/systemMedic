@@ -20,6 +20,7 @@ router.get('/user', authMiddleware, UserController.index);
 
 /*PACIENT*/
 router.post('/pacient', PacientController.store);
+router.get('/pacient/:frase', PacientController.readyBySpecific);
 router.get('/pacient', PacientController.ready);
 router.get('/pacient/:id', PacientController.readyByOne);
 router.delete('/pacient/:id', PacientController.delete);
@@ -29,6 +30,7 @@ router.put('/pacient/:id', PacientController.update);
 router.post('/medicine', MedicineController.store);
 router.get('/medicine/:frase', MedicineController.readyBySpecific);
 router.get('/medicine', MedicineController.ready);
+router.get('/medicine/control/:type', MedicineController.readyControl);
 router.get('/medicine/:id', MedicineController.readyByOne);
 router.delete('/medicine/:id', MedicineController.delete);
 router.put('/medicine/:id', MedicineController.update);
