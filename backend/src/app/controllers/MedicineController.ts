@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getRepository, LessThanOrEqual} from 'typeorm';
+import { getRepository, LessThanOrEqual, Raw} from 'typeorm';
 
 import Medicine from '../models/Medicine';
 import { MedicineDto } from '../validators/MedicineDto';
@@ -31,8 +31,13 @@ class MedicineController {
 
     async readyControl(req: Request, res: Response){
         const repository = getRepository(Medicine);
-        const { type } = req.params;
-        const medicines = await repository.find({where: {type: type}});
+        const { type, dateIni, dateFim } = req.params;
+        const medicines = await repository.find({
+            where: {
+                type: type,
+                created_at: Raw((alias) => `${alias} <= :dateIni` && `${alias} >= :dateFim`, { dateIni: dateIni, dateFim: dateFim }),
+            }
+        });
 
         return res.json(medicines);
     }
@@ -45,7 +50,6 @@ class MedicineController {
 
         return res.json(medicines);
     }
-
 
     async ready(req: Request, res: Response){
         const repository = getRepository(Medicine);

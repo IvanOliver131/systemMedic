@@ -34,7 +34,7 @@ router.post('/medicine', MedicineController.store);
 router.get('/medicine', MedicineController.ready);
 router.get('/medicine/reposicao', MedicineController.readyByQtd);
 router.get('/medicine/:frase', MedicineController.readyBySpecific);
-router.get('/medicine/control/:type', MedicineController.readyControl);
+router.get('/medicine/control/:type/:dateIni/:dateFim', MedicineController.readyControl);
 router.get('/medicine/:id', MedicineController.readyByOne);
 router.delete('/medicine/:id', MedicineController.delete);
 router.put('/medicine/:id', MedicineController.update);

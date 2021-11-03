@@ -38,8 +38,8 @@ export class MedicineService {
       return this.http.get<Medicine[]>(`${this.medicineURL}/reposicao`);
     }
 
-    getAllMedicinesControl(typeControl): Observable<Medicine[]> {
-      return this.http.get<Medicine[]>(`${this.medicineURL}/control/` + typeControl);
+    getAllMedicinesControl(typeControl, dateIni, dateFim): Observable<Medicine[]> {
+      return this.http.get<Medicine[]>(`${this.medicineURL}/control/${typeControl}/${dateIni}/${dateFim}`);
     }
 
     getAllMedicines(): Observable<Medicine[]> {

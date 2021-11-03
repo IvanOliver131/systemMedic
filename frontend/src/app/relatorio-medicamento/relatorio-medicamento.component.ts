@@ -9,6 +9,8 @@ import { Medicine } from '../shared/medicine';
 })
 export class RelatorioMedicamentoComponent implements OnInit {
   public medicine: Medicine = new Medicine();
+  public dataAtual = '';
+  public dateFinal = '';
   public search;
   public typeControl = 1;
   public allMedicineLst: Array<Medicine> = new Array<Medicine>();
@@ -18,6 +20,11 @@ export class RelatorioMedicamentoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    let dateIni = new Date();
+    let dia = String(dateIni.getDate()).padStart(2, '0');
+    let mes = String(dateIni.getMonth() + 1).padStart(2, '0');
+    let ano = dateIni.getFullYear();
+    this.dataAtual = ano + '-' + mes + '-' + dia;
     this.getMedicinesControl(this.typeControl);
   }
 
@@ -44,13 +51,54 @@ export class RelatorioMedicamentoComponent implements OnInit {
   }
 
   async getMedicinesControl(typeControl){
-    this.medicineSvc.getAllMedicinesControl(typeControl).subscribe((result) =>{
+    this.medicineSvc.getAllMedicinesControl(typeControl, this.dataAtual, this.dataAtual).subscribe((result) =>{
       this.allMedicineLst = result;   
     });
   }
 
   async downloadCsv(allMedicineLst, nameString){
     this.medicineSvc.downloadExcel(allMedicineLst, nameString);
+  }
+
+  async filterDate(filter){
+    if(filter === 1){
+      this.medicineSvc.getAllMedicinesControl(this.typeControl, this.dataAtual, this.dataAtual).subscribe((result) =>{
+        this.allMedicineLst = result;   
+      });
+    }else if(filter === 7){
+      let dateFim = new Date();
+      dateFim.setDate(dateFim.getDate() - 7);
+      let dia = String(dateFim.getDate()).padStart(2, '0');
+      let mes = String(dateFim.getMonth() + 1).padStart(2, '0');
+      let ano = dateFim.getFullYear();
+      this.dateFinal = ano + '-' + mes + '-' + dia;
+
+      this.medicineSvc.getAllMedicinesControl(this.typeControl, this.dataAtual, this.dateFinal).subscribe((result) =>{
+        this.allMedicineLst = result;   
+      });
+    }else if(filter === 15){
+      let dateFim = new Date();
+      dateFim.setDate(dateFim.getDate() - 15);
+      let dia = String(dateFim.getDate()).padStart(2, '0');
+      let mes = String(dateFim.getMonth() + 1).padStart(2, '0');
+      let ano = dateFim.getFullYear();
+      this.dateFinal = ano + '-' + mes + '-' + dia;
+
+      this.medicineSvc.getAllMedicinesControl(this.typeControl, this.dataAtual,this.dateFinal).subscribe((result) =>{
+        this.allMedicineLst = result;   
+      });    
+    }else if(filter === 30){
+      let dateFim = new Date();
+      dateFim.setDate(dateFim.getDate() - 30);
+      let dia = String(dateFim.getDate()).padStart(2, '0');
+      let mes = String(dateFim.getMonth() + 1).padStart(2, '0');
+      let ano = dateFim.getFullYear();
+      this.dateFinal = ano + '-' + mes + '-' + dia;
+
+      this.medicineSvc.getAllMedicinesControl(this.typeControl, this.dataAtual, this.dateFinal).subscribe((result) =>{
+        this.allMedicineLst = result;   
+      });    
+    }
   }
 
 }

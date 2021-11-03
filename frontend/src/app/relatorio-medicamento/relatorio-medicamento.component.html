@@ -3,7 +3,7 @@
   <div class="card" >
     <div class="card-body">
       <h5 class="card-title">Relatório de Medicamentos Controlados</h5>
-      <label class="text-input-select">Selecione o periodo desejado: <span class="text-input-select2">HOJE</span> | <span class="text-input-select2">7 Dias</span> | <span class="text-input-select2">15 Dias</span> | <span class="text-input-select2">30 Dias</span></label>   
+      <label class="text-input-select">Selecione o periodo desejado: <span class="text-input-select2" (click)="filterDate(1)">HOJE</span> | <span class="text-input-select2" (click)="filterDate(7)">7 Dias</span> | <span class="text-input-select2" (click)="filterDate(15)">15 Dias</span> | <span class="text-input-select2" (click)="filterDate(30)">30 Dias</span></label>   
       <br>
       <label class="text-input" style="margin-top: 0">Este são todos os medicamentos controlados registrados no periodo de:  </label>   
     </div>
