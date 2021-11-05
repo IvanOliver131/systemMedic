@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicineService } from '../service/medicine/medicine.service';
 import { PacientService } from '../service/pacient/pacient.service';
+import { RetiradaService } from '../service/retirada/retirada.service';
 import { Medicine } from '../shared/medicine';
 import { Pacient } from '../shared/pacient';
 
@@ -11,17 +12,25 @@ import { Pacient } from '../shared/pacient';
 })
 export class RetiradaComponent implements OnInit {
   public pacient: Pacient = new Pacient();
+  public lstMedicine: any = [
+    {
+      id_medicine: 0,
+      qtd_medicine: 0,
+    }
+  ];
+
+  public allRetiradaLst: any = [];
   public searchPacient;
   public searchMedicine;
   public allPacientLst: Array<Pacient> = new Array<Pacient>();
   public medicine: Medicine = new Medicine();
   public allMedicineLst: Array<Medicine> = new Array<Medicine>();
-  public qtdMedicine: any = [];
   public medicines: any = [1];
 
   constructor(
     private pacientSvc: PacientService,
-    private medicineSvc: MedicineService
+    private medicineSvc: MedicineService,
+    private retiradaSvc: RetiradaService
   ) { }
 
   ngOnInit(): void {
@@ -133,7 +142,12 @@ export class RetiradaComponent implements OnInit {
   }
 
   addRetirada(){
-
+    console.log(this.pacient.id)
+    console.log(this.lstMedicine)
+    this.retiradaSvc.registerPacientMedicine(this.pacient, this.lstMedicine).subscribe((result)=>{
+      this.allRetiradaLst = result;
+      console.log(this.allRetiradaLst)
+    });    
   }
 
   removeRetirada(){}
