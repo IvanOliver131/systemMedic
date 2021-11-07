@@ -24,6 +24,13 @@ if(process.env.NODE_ENV == "development"){
     "username": process.env.TYPEORM_USERNAME_PROD,
     "password": process.env.TYPEORM_PASSWORD_PROD,
     "database": process.env.TYPEORM_DATABASE_PROD,
+    "synchronize": false,
+    "extra": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false, 
+      }
+    },
     "entities": [
       process.env.TYPEORM_ENTITIES_PROD
     ],
