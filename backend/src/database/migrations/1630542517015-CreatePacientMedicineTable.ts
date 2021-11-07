@@ -8,17 +8,17 @@ export class CreatePacientMedicineTable1630542517015 implements MigrationInterfa
             columns: [
                 {
                     name: 'id_pacient',
-                    type: 'BIGINT UNSIGNED',
+                    type: 'serial',
                     isPrimary: true,
                 },
                 {
                     name: 'id_medicine',
-                    type: 'BIGINT UNSIGNED',
+                    type: 'serial',
                     isPrimary: true,
                 },
                 {
                     name: 'qtd_medicine',
-                    type: 'int',
+                    type: 'integer',
                 },
                 {
                     name: 'created_at',

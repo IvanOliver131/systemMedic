@@ -34,7 +34,7 @@ export class CreateMedicineTable1630540665482 implements MigrationInterface {
                 },
                 {
                     name: 'valor',
-                    type: 'float',
+                    type: 'real',
                 },
                 {
                     name: 'descricao',
