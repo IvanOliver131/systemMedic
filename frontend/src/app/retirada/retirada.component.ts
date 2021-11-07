@@ -12,20 +12,17 @@ import { Pacient } from '../shared/pacient';
 })
 export class RetiradaComponent implements OnInit {
   public pacient: Pacient = new Pacient();
-  public lstMedicine: any = [
-    {
-      id_medicine: 0,
-      qtd_medicine: 0,
-    }
-  ];
+  public medicine: Medicine = new Medicine();
 
+  public allPacientLst: Array<Pacient> = new Array<Pacient>();
+  public allMedicineLst: Array<Medicine> = new Array<Medicine>();
+
+  public lstMedicine: any = [];
   public allRetiradaLst: any = [];
+  public medicines: any = [1];
+
   public searchPacient;
   public searchMedicine;
-  public allPacientLst: Array<Pacient> = new Array<Pacient>();
-  public medicine: Medicine = new Medicine();
-  public allMedicineLst: Array<Medicine> = new Array<Medicine>();
-  public medicines: any = [1];
 
   constructor(
     private pacientSvc: PacientService,
@@ -36,35 +33,46 @@ export class RetiradaComponent implements OnInit {
   ngOnInit(): void {
     this.getPacients();
     this.getMedicines();
+    this.getAllRetirada();
+    this.push();
+  }
+
+  pop(){
+    this.lstMedicine.pop({id_medicine: '', qtd_medicine: ''});
+  }
+
+  push(){
+    this.lstMedicine.push({id_medicine: '', qtd_medicine: ''});
   }
 
   verifyInputs() {
     let msg = ``
     let success = true;
     if (!this.pacient.name) {
-      msg += ` O campo nome do paciente é requerido`;
+      msg += `O campo nome do paciente é requerido\n\n`;
       success = false;
     }
     if (!this.pacient.age) {
-      msg += ` O campo idade do paciente é requerido`;
+      msg += `O campo idade do paciente é requerido\n\n`;
       success = false;
     }
     if (!this.pacient.bairro) {
-      msg += ` O campo bairro do paciente é requerido`;
+      msg += `O campo bairro do paciente é requerido\n\n`;
       success = false;
     }
     if (!this.pacient.cartaoSUS_RG) {
-      msg += ` O campo cartao do SUS ou RG do paciente é requerido`;
+      msg += `O campo cartao do SUS ou RG do paciente é requerido\n\n`;
       success = false;
     }
     if (!this.pacient.cpf) {
-      msg += ` O campo CPF do paciente é requerido`;
+      msg += `O campo CPF do paciente é requerido\n\n`;
       success = false;
     }
     if (!success) {
       console.log(msg, `Ok`, {
         duration: 3000,
       });
+      alert(msg)
     }
     return success;
   }
@@ -134,19 +142,32 @@ export class RetiradaComponent implements OnInit {
   removeMedicine(){
     let i = 1;
     this.medicines.pop(i);
+    this.pop();
   }
 
   addMedicine(){
     let i = 1;
     this.medicines.push(i);
+    this.push();
   }
 
   addRetirada(){
-    console.log(this.pacient.id)
-    console.log(this.lstMedicine)
     this.retiradaSvc.registerPacientMedicine(this.pacient, this.lstMedicine).subscribe((result)=>{
       this.allRetiradaLst = result;
-      console.log(this.allRetiradaLst)
+      this.getAllRetirada();
+    });    
+  }
+
+  getAllRetirada(){
+    this.retiradaSvc.getAllPacientMedicine().subscribe((result)=>{
+      this.allRetiradaLst = result;
+      this.allRetiradaLst.forEach((retirada) => {
+        this.allPacientLst.forEach((paciente) => {
+          if(retirada.id_pacient == paciente.id){
+            retirada.name = paciente.name;
+          }
+        });
+      });
     });    
   }
 

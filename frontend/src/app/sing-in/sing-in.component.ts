@@ -26,61 +26,22 @@ export class SingInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  add() {
-    this.el = document.querySelector(".containerr");
-    this.el.classList.add("sign-up-mode");
-  }
-
-  remove() {
-    this.el = document.querySelector(".containerr");
-    this.el.classList.remove("sign-up-mode");
-  }
-
-  verifyInputs2() {
-    let msg = ``
-    let success = true;
-    if (!this.user.email) {
-      msg += `O campo E-mail é requerido.`;
-      success = false;
-    }
-    if (!this.user.password) {
-      msg += ` O campo Senha é requerido`;
-      success = false;
-    }
-    if (!success) {
-      console.log(msg, `Ok`, {
-        duration: 3000,
-      });
-    }
-    return success;
-  }
-
-  registerUser() {
-    if (this.verifyInputs2()) {
-      this.userSvc.register(this.user).subscribe(
-        () => {
-          localStorage.setItem('email', this.user.email);
-        }
-      );
-      this.user = new User();
-    }
-  }
-
   verifyInputs() {
     let msg = ``
     let success = true;
     if (!this.authentication.email) {
-      msg += `O campo E-mail é requerido.`;
+      msg += `O campo E-mail é requerido.\n\n`;
       success = false;
     }
     if (!this.authentication.password) {
-      msg += ` O campo Senha é requerido`;
+      msg += `O campo Senha é requerido.\n\n`;
       success = false;
     }
     if (!success) {
       console.log(msg, `Ok`, {
         duration: 3000,
       });
+      alert(msg);
     }
     return success;
   }
@@ -88,10 +49,13 @@ export class SingInComponent implements OnInit {
   authenticate() {
     if (this.verifyInputs()) {
       this.authSvc.login(this.authentication).subscribe(
-        () => {
+        result => {
           this.router.navigateByUrl('controle-de-medicamentos');
         }
-      );
+      ),
+      ()=>{
+        
+      }
 
       this.authentication = new Authentication();
 

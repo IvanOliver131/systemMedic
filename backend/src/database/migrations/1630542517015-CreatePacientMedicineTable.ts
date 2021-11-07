@@ -20,6 +20,12 @@ export class CreatePacientMedicineTable1630542517015 implements MigrationInterfa
                     name: 'qtd_medicine',
                     type: 'int',
                 },
+                {
+                    name: 'created_at',
+                    type: 'timestamp',
+                    default: 'now()'
+                },
+
             ],
             foreignKeys: [
                 {

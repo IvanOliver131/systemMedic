@@ -19,13 +19,13 @@ export class MedicineService {
 
     registerMedicine(cadastroObj: any) {
         const obj = {
-            name: cadastroObj.name,
+            name: cadastroObj.name.toLowerCase(),
             estoque: cadastroObj.estoque,
             type: cadastroObj.type,
-            fornecedor: cadastroObj.fornecedor,
-            nota_fiscal: cadastroObj.nota_fiscal,
+            fornecedor: cadastroObj.fornecedor.toLowerCase(),
+            nota_fiscal: cadastroObj.nota_fiscal.toLowerCase(),
             valor: cadastroObj.valor,
-            descricao: cadastroObj.descricao
+            descricao: cadastroObj.descricao.toLowerCase()
         }
 
         let headers = new HttpHeaders();
@@ -48,7 +48,7 @@ export class MedicineService {
 
     getSpecificMedicines(searchObj: any): Observable<Medicine[]>{
       const obj = {
-        frase: searchObj
+        frase: searchObj.toLowerCase()
       }
       
       return this.http.get<Medicine[]>(`${this.medicineURL}/${obj.frase}`);
@@ -56,13 +56,13 @@ export class MedicineService {
 
     updateMedicine(alterObj: any): Observable<Medicine[]>{
       const obj = {
-        name: alterObj.name,
+        name: alterObj.name.toLowerCase(),
         estoque: alterObj.estoque,
         type: alterObj.type,
-        fornecedor: alterObj.fornecedor,
-        nota_fiscal: alterObj.nota_fiscal,
+        fornecedor: alterObj.fornecedor.toLowerCase(),
+        nota_fiscal: alterObj.nota_fiscal.toLowerCase(),
         valor: alterObj.valor,
-        descricao: alterObj.descricao
+        descricao: alterObj.descricao.toLowerCase()
     }
 
       return this.http.put<Medicine[]>(`${this.medicineURL}/${alterObj.id}`, obj);

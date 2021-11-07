@@ -45,6 +45,7 @@ export class PainelComponent implements OnInit {
       console.log(msg, `Ok`, {
         duration: 3000,
       });
+      alert(msg)
     }
     return success;
   }

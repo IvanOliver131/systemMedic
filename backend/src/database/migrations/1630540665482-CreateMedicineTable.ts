@@ -45,11 +45,11 @@ export class CreateMedicineTable1630540665482 implements MigrationInterface {
                     type: 'timestamp',
                     default: 'now()'
                 },
-                {
-                    name: 'deleted_at',
-                    type: 'timestamp',
-                    isNullable: true
-                }
+                // {
+                //     name: 'deleted_at',
+                //     type: 'timestamp',
+                //     isNullable: true
+                // }
             ],
         }));
     }

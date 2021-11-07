@@ -38,39 +38,33 @@
     </div>
   </div> -->
 
-  <!-- <div class="container scroll">
+  <div class="container scroll">
     <table class="table table-responsive" >
         <thead style="background-color: #70A0FF;">
             <tr>
-                <th scope="col" class="title-table">ID</th>
-                <th scope="col" class="title-table">Medicamento</th>
-                <th scope="col" class="title-table">Tipo</th>
-                <th scope="col" class="title-table">Estoque</th>
-                <th scope="col" class="title-table">Fornecedor</th>
-                <th scope="col" class="title-table">Nota Fiscal</th>
-                <th scope="col" class="title-table">Valor</th>
-                <th scope="col" class="title-table">Descrição</th>
+                <th scope="col" class="title-table">ID_Paciente</th>
+                <th scope="col" class="title-table">Paciente</th>
+                <th scope="col" class="title-table">ID_Medicamento</th>
+                <th scope="col" class="title-table">Medicmento</th>
+                <th scope="col" class="title-table">Quantidade</th>
             </tr>
         </thead>
 
         <tbody>
-            <tr *ngFor="let qtd of allMedicineLst, let i = index">
-                <th scope="row" class="text-table">{{qtd.id}}</th>
+            <tr *ngFor="let qtd of allRetiradaLst, let i = index">
+                <td class="text-table">{{qtd.id_pacient}}</td>
                 <td class="text-table">{{qtd.name}}</td>
-                <td class="text-table">{{qtd.type? 'Controlado' : 'Nao Controlado'}}</td>
-                <td class="text-table">{{qtd.estoque}}</td>
-                <td class="text-table">{{qtd.fornecedor}}</td>
-                <td class="text-table">{{qtd.nota_fiscal}}</td>
-                <td class="text-table">{{qtd.valor}}</td>
-                <td class="text-table">{{qtd.descricao}}</td>
-                <span type="text" class="btn button-delete" style="margin-left: 20px; margin-top: 3px; border: none; background-color:#d9534f; color: white;"
+                <td class="text-table">{{qtd.id_medicine}}</td>
+                <td class="text-table">{{qtd.medicines.name}}</td>
+                <td class="text-table">{{qtd.qtd_medicine}}</td>
+                <!-- <span type="text" class="btn button-delete" style="margin-left: 20px; margin-top: 3px; border: none; background-color:#d9534f; color: white;"
                     (click)="deleteMedicine(allMedicineLst[i])"><i class="uil uil-trash-alt"></i></span>
                     
                 <span type="text" class="btn button-update" style="margin-left: 5px; margin-top: 3px; border: none; background-color: #0275d8; color: white;"
-                    (click)="setMedicine(allMedicineLst[i])"><i class="uil uil-edit"></i></span>
+                    (click)="setMedicine(allMedicineLst[i])"><i class="uil uil-edit"></i></span> -->
             </tr>
         </tbody>
     </table>
-  </div> -->
+  </div>
 </div>
 

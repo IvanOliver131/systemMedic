@@ -43,6 +43,8 @@ router.put('/medicine/:id', MedicineController.update);
 router.post('/pacientMedicine', PacientMedicineController.store);
 router.get('/pacientMedicine', PacientMedicineController.ready);
 router.get('/pacientMedicine/:id', PacientMedicineController.readyByOne);
+router.get('/pacientMedicine/:dateIni/:dateFim', PacientMedicineController.readyAllByDate);
+router.get('/pacientMedicine/:frase', PacientMedicineController.readyBySpecific);
 //router.delete('/pacientMedicine/:id', PacientMedicineController.delete);
 //router.put('/pacientMedicine/:id', PacientMedicineController.update);
 

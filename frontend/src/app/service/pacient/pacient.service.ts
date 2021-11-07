@@ -13,11 +13,11 @@ export class PacientService {
 
     registerPacient(cadastroObj: any) {
       const obj = {
-        name: cadastroObj.name,
+        name: cadastroObj.name.toLowerCase(),
         age: cadastroObj.age,
-        bairro: cadastroObj.bairro,
+        bairro: cadastroObj.bairro.toLowerCase(),
         cpf: cadastroObj.cpf,
-        cartaoSUS_RG: cadastroObj.cartaoSUS_RG,
+        cartaoSUS_RG: cadastroObj.cartaoSUS_RG.toLowerCase(),
       }
 
         let headers = new HttpHeaders();
@@ -28,7 +28,7 @@ export class PacientService {
 
     getSpecificPacients(searchObj: any): Observable<Pacient[]>{
       const obj = {
-        frase: searchObj
+        frase: searchObj.toLowerCase()
       }
       
       return this.http.get<Pacient[]>(`${this.pacientURL}/${obj.frase}`);
@@ -40,11 +40,11 @@ export class PacientService {
 
     updatePacient(alterObj: any): Observable<Pacient[]>{
       const obj = {
-        name: alterObj.name,
+        name: alterObj.name.toLowerCase(),
         age: alterObj.age,
-        bairro: alterObj.bairro,
+        bairro: alterObj.bairro.toLowerCase(),
         cpf: alterObj.cpf,
-        cartaoSUS_RG: alterObj.cartaoSUS_RG,
+        cartaoSUS_RG: alterObj.cartaoSUS_RG.toLowerCase(),
       }
 
       return this.http.put<Pacient[]>(`${this.pacientURL}/${alterObj.id}`, obj);

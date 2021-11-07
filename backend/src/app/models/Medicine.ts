@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, CreateDateColumn, ManyToMany, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
 import PacientMedicine from './PacientMedicine';
 
 @Entity('medicines')
@@ -28,10 +28,7 @@ class Medicine {
     descricao: string;
 
     @CreateDateColumn()
-    created_at: Date
-
-    @Column()
-    deleted_at: Date
+    created_at: Date;
 
     @OneToMany(() => PacientMedicine, pacientMedicine => pacientMedicine.medicines)
     pacientMedicine: PacientMedicine[];

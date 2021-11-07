@@ -48,7 +48,8 @@ export class RegistrarUsuarioComponent implements OnInit {
     if (this.verifyInputs()) {
       this.userSvc.register(this.user).subscribe(
         () => {
-          console.log('Usuario cadastrado com sucesso!')
+          this.getUsers();
+          console.log('Usuario cadastrado com sucesso!');
         }
       );
       this.user = new User();

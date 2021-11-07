@@ -24,9 +24,6 @@ class Pacient {
     @CreateDateColumn()
     created_at: Date;
 
-    @Column()
-    deleted_at: Date;
-
     @OneToMany(() => PacientMedicine, pacientMedicine => pacientMedicine.pacients, { eager: true })
     pacientMedicine: PacientMedicine[];
 }

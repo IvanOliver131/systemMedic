@@ -17,8 +17,8 @@ export class UserService {
         // cadastroObj.password = password;
 
         const obj = {
-            username: cadastroObj.username,
-            email: cadastroObj.email,
+            username: cadastroObj.username.toLowerCase(),
+            email: cadastroObj.email.toLowerCase(),
             password: cadastroObj.password,
             type: cadastroObj.type
         }
@@ -36,7 +36,7 @@ export class UserService {
 
     getSpecificUser(searchObj: any): Observable<User[]>{
         const obj = {
-            frase: searchObj
+            frase: searchObj.toLowerCase()
         }
         
         return this.http.get<User[]>(`${this.usersURL}/${obj.frase}`);
@@ -44,9 +44,9 @@ export class UserService {
 
     updateUser(alterObj: any): Observable<User[]>{
         const obj = {
-            username: alterObj.username,
+            username: alterObj.username.toLowerCase(),
             type: alterObj.type,
-            email: alterObj.email,
+            email: alterObj.email.toLowerCase(),
             password: alterObj.password,
         }
 

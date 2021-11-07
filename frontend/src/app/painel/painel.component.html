@@ -68,7 +68,7 @@
                 <td class="text-table">{{qtd.estoque}}</td>
                 <td class="text-table">{{qtd.fornecedor}}</td>
                 <td class="text-table">{{qtd.nota_fiscal}}</td>
-                <td class="text-table">{{qtd.valor}}</td>
+                <td class="text-table">R{{qtd.valor | currency}}</td>
                 <td class="text-table">{{qtd.descricao}}</td>
                 <span type="text" class="btn button-delete" style="margin-left: 20px; margin-top: 3px; border: none; background-color:#d9534f; color: white;"
                     (click)="deleteMedicine(allMedicineLst[i])"><i class="uil uil-trash-alt"></i></span>

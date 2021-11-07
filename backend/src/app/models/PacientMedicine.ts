@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import Medicine from './Medicine';
 import Pacient from './Pacient';
 
@@ -13,6 +13,9 @@ class PacientMedicine {
     @Column()
     qtd_medicine: number;
 
+    @CreateDateColumn()
+    created_at: Date;
+
     @ManyToOne(() => Pacient, (pacients) => pacients.pacientMedicine)
     @JoinColumn([{ name: "id_pacient", referencedColumnName: "id" }])
     pacients: Pacient;
@@ -20,6 +23,8 @@ class PacientMedicine {
     @ManyToOne(() => Medicine, (medicines) => medicines.pacientMedicine, { eager: true })
     @JoinColumn([{ name: "id_medicine", referencedColumnName: "id" }])
     medicines: Medicine;
+
+   
 }
 
 export default PacientMedicine;
